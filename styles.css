@@ -7,6 +7,7 @@ font-family: Arial, sans-serif;
 margin: 0;
 padding: 0;
 overflow: hidden;
+scroll-behavior: smooth;
 }
 
 @keyframes backgroundAnimation {
@@ -16,12 +17,14 @@ overflow: hidden;
 }
 
 header {
+```html
 background-color: rgba(0, 0, 0, 0.8);
 padding: 10px 0;
 position: fixed;
 width: 100%;
 top: 0;
 z-index: 1000;
+border-bottom: 3px solid white; /* خط سفلي أبيض */
 }
 
 nav ul {
@@ -47,8 +50,9 @@ color: #ffcc00;
 }
 
 section {
-padding: 80px 20px; /* added offset for fixed header */
+padding: 100px 20px; /* added offset for fixed header */
 text-align: center;
+min-height: 100vh; /* جعل الأقسام تأخذ ارتفاع كامل */
 }
 
 #home, #info {
@@ -109,21 +113,3 @@ transform: translateY(100vh);
 opacity: 0;
 }
 }
-```
-
-‎3. إنشاء ملف `script.js`:
-```javascript
-// script.js
-function createSnowflake() {
-const snowflake = document.createElement('div');
-snowflake.classList.add('snowflake');
-snowflake.style.left = `${Math.random() * window.innerWidth}px`;
-snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
-document.getElementById('snowflakes').appendChild(snowflake);
-
-setTimeout(() => {
-snowflake.remove();
-}, 5000);
-}
-
-setInterval(createSnowflake, 100);
